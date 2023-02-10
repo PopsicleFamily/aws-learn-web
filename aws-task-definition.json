@@ -39,6 +39,7 @@
   ],
   "family": "job_analysis",
   "executionRoleArn": "arn:aws:iam::204337044620:role/ecsTaskExecutionRole",
+  "taskRoleArn": "arn:aws:iam::204337044620:role/ecsTaskExecutionRole",
   "networkMode": "awsvpc",
   "revision": 1,
   "volumes": [],
