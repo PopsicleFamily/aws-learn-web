@@ -7,17 +7,10 @@
           "cpu": 0,
           "portMappings": [
               {
-                  "containerPort": 80,
+                  "containerPort": 8080,
                   "hostPort": 80,
                   "protocol": "tcp",
                   "name": "web-dev-80-tcp",
-                  "appProtocol": "http"
-              },
-              {
-                  "containerPort": 443,
-                  "hostPort": 443,
-                  "protocol": "tcp",
-                  "name": "web-dev-443-tcp",
                   "appProtocol": "http"
               }
           ],
