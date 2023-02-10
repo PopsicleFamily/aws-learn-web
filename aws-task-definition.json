@@ -2,8 +2,8 @@
   "taskDefinitionArn": "arn:aws:ecs:eu-north-1:204337044620:task-definition/job_analysis:1",
   "containerDefinitions": [
       {
-          "name": "web-dev",
-          "image": "public.ecr.aws/docker/library/node:18-alpine",
+          "name": "web-app",
+          "image": "",
           "cpu": 0,
           "portMappings": [
               {
