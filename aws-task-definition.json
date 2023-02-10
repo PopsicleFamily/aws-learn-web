@@ -1,30 +1,82 @@
 {
-  "containerDefinitions": [ 
-     {
-        "entryPoint": [
-           "sh",
-           "-c"
-        ],
-        "essential": true,
-        "image": "node:18-alpine",
-        "name": "web-app",
-        "portMappings": [ 
-           { 
-              "containerPort": 80,
-              "hostPort": 80,
-              "protocol": "tcp"
-           }
-        ]
-     }
+  "taskDefinitionArn": "arn:aws:ecs:eu-north-1:204337044620:task-definition/job_analysis:1",
+  "containerDefinitions": [
+      {
+          "name": "web-dev",
+          "image": "public.ecr.aws/docker/library/node:18-alpine",
+          "cpu": 0,
+          "portMappings": [
+              {
+                  "containerPort": 80,
+                  "hostPort": 80,
+                  "protocol": "tcp",
+                  "name": "web-dev-80-tcp",
+                  "appProtocol": "http"
+              },
+              {
+                  "containerPort": 443,
+                  "hostPort": 443,
+                  "protocol": "tcp",
+                  "name": "web-dev-443-tcp",
+                  "appProtocol": "http"
+              }
+          ],
+          "essential": true,
+          "environment": [],
+          "environmentFiles": [],
+          "mountPoints": [],
+          "volumesFrom": [],
+          "logConfiguration": {
+              "logDriver": "awslogs",
+              "options": {
+                  "awslogs-create-group": "true",
+                  "awslogs-group": "/ecs/job_analysis",
+                  "awslogs-region": "eu-north-1",
+                  "awslogs-stream-prefix": "ecs"
+              }
+          }
+      }
   ],
-  "cpu": "256",
   "family": "job_analysis",
-  "memory": "512",
+  "executionRoleArn": "arn:aws:iam::204337044620:role/ecsTaskExecutionRole",
   "networkMode": "awsvpc",
+  "revision": 1,
+  "volumes": [],
+  "status": "ACTIVE",
+  "requiresAttributes": [
+      {
+          "name": "com.amazonaws.ecs.capability.logging-driver.awslogs"
+      },
+      {
+          "name": "ecs.capability.execution-role-awslogs"
+      },
+      {
+          "name": "com.amazonaws.ecs.capability.docker-remote-api.1.19"
+      },
+      {
+          "name": "com.amazonaws.ecs.capability.docker-remote-api.1.18"
+      },
+      {
+          "name": "ecs.capability.task-eni"
+      },
+      {
+          "name": "com.amazonaws.ecs.capability.docker-remote-api.1.29"
+      }
+  ],
+  "placementConstraints": [],
+  "compatibilities": [
+      "EC2",
+      "FARGATE"
+  ],
   "runtimePlatform": {
-       "operatingSystemFamily": "LINUX"
-   },
-  "requiresCompatibilities": [ 
-      "FARGATE" 
-   ]
+      "cpuArchitecture": "X86_64",
+      "operatingSystemFamily": "LINUX"
+  },
+  "requiresCompatibilities": [
+      "FARGATE"
+  ],
+  "cpu": "512",
+  "memory": "1024",
+  "registeredAt": "2023-02-09T19:27:06.729000+08:00",
+  "registeredBy": "arn:aws:iam::204337044620:user/xinyu.cheng"
 }
